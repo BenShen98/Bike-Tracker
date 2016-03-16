@@ -1,0 +1,24 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+    geo.caculation.transport: value
+    geo.map.api:
+
+services:
+    geo.calculation:
+        class:        AppBundle\Geo
+        arguments:    ['%%app.geo.transport%%']
+
+    api_key_user_provider:
+            class: AppBundle\Security\ApiKeyUserProvider
+    apikey_authenticator:
+            class:  AppBundle\Security\ApiKeyAuthenticator
+            public: false
+
+    #database.add:
+     #   class: AppBundle\Database
+      #  arguments: [@service_container]
+
+    #database:
+     #   class:  AppBundle\Database
+      #  calls: [setContainer, ["@service_container"]]

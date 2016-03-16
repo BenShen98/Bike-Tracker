@@ -1,0 +1,30 @@
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    {{ include(':ees/div:div.table.html.twig') }}
+    {{ include(':ees/div:div.map.html.twig') }}
+{% endblock %}
+
+{% block style %}
+    {{ parent() }}
+    <style>
+        #table {
+            height: 100%;
+            width:50%;
+            float:left;
+
+        }
+        #map {
+            height: 100%;
+            width:50%;
+            float:right;
+            background-color: #66dd66;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ include(":ees/script:script.map.html.twig") }}
+{% endblock %}
+

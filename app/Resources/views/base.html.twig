@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
+        <meta charset="UTF-8" />
+        <title>{% block title %}Find My Bike{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/style/style.css') }}">
+        {% endblock %}
+
+        {% block style %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+       <!-- <style>
+            #main {
+                height: 100%;
+            }
+            #menubar {
+                height: 20%;
+            }
+        </style>
+        -->
+    </head>
+    <body>
+    <div id="main">
+    {% block menubar %}
+        <div id="menubar">
+            <ul id="menu">
+                <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                <li class="selected"><a href="/">Home</a></li>
+                <li><a href="{{ path('lostBike') }}">Lost Bike?</a></li>
+                <li><a href="{{ path('table') }}">detailed log</a></li>
+                <li><a href="{{ path('map') }}">Map</a></li>
+                <li><a href="{{ path('active') }}">active</a></li>
+                <li><a href="{{ path('setting') }}">Setting</a></li>
+                <li><a href="{{ path('logout') }}">logout</a></li>
+            </ul>
+        </div>
+    {% endblock %}
+    </div>
+
+
+    {% block body %}
+
+    {% endblock %}
+
+    {% block javascripts %}{% endblock %}
+
+    </body>
+</html>

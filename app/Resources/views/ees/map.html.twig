@@ -1,0 +1,27 @@
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include(':ees/div:div.map.html.twig') }}
+{% endblock %}
+
+{% block style %}
+    {{ parent() }}
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 80%;
+            width:100%;
+            float:right;
+            background-color: #66dd66;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ include(":ees/script:script.map.html.twig") }}
+{% endblock %}
+

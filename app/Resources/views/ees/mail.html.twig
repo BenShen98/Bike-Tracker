@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h3>Your bike had been moved at {{ current.timestamp|date('h:i:s') }}</h3>
+<div id="brief ">
+Your bike is currently at {{ current.address }}, marked with M ( {{ current.lat }},{{ current.lng }}).<br>
+    <br>
+You had locked your bike at {{ user.address }}marked with L ( {{ user.lat }},{{ user.lng }})<br>
+    <br>
+The distance moved is {{distanceMoved|number_format(2, '.', ',')  }} meters.
+</div>
+<div id="map">
+    <img src="{{ imageURL }}" alt="Image" />'
+</div>
+To Check detail, go to: <a href={{url('homepage') }}>...</a>.
+
+Thanks!
+</body>
+</html>

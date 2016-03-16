@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Big Picture by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Find My Bike</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!--[if lte IE 8]><script src="{{ asset('welcomeasset/assets/js/ie/html5shiv.js') }}"></script><![endif]-->
+		<link rel="stylesheet" href="{{ asset('welcomeasset/assets/css/main.css') }}" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('welcomeasset/assets/css/ie8.css') }}" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('welcomeasset/assets/css/ie9.css') }}" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+
+				<!-- Logo -->
+					<h1 id="logo">Abbey EES</h1>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<form action="{{ path('login') }}" method="post">
+							<ul>
+								<li><a href="#intro">Intro</a></li>
+								<li><a href="#one">What I Do</a></li>
+								<li><a href="#two">Further Extention</a></li>
+								<li><a href="#work">My Work</a></li>
+								<li><input onClick="this.setSelectionRange(0, this.value.length)" type="text" id="username" name="_username" value="username" /></li>
+								<li><input onClick="this.setSelectionRange(0, this.value.length)" type="password" id="password" name="_password" value="password"/><li>
+								<li><button type="submit">login</button><li>
+								<li><a href="{{path('user_registration') }}">Register</a></li>
+
+							</ul>
+						</form>
+					</nav>
+
+			</header>
+
+		<!-- Intro -->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content container 75%">
+					<header>
+						<h2>Find your bike in no time.</h2>
+					</header>
+					<p>Welcome to <strong>Bike Tracker</strong> designed
+					by Abbey EES Team.</strong>
+					<footer>
+						<a href="#one" class="button style2 down">More</a>
+					</footer>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>What I Do</h2>
+					</header>
+					<p>
+					    The bike tracker is built on a portable device attached to your bike. By transferring the location data to our database
+					   ,bike owners can easily track their babies at any place with nice and decent cecullar signals coverage. Also real-time emails will be sent to you if they are moved under the lock mode。 
+					</p>
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="main style2 left dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Further Extension</h2>
+					</header>
+					<p>The team is considering cooperating with local police officers.</p>
+				</div>
+				<a href="#work" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Work -->
+			<section id="work" class="main style3 primary">
+				<div class="content container">
+					<header>
+						<h2>My Work</h2>
+						<p>Whenever unexpected movements of your bike are detected, email alerts would be sent at once to your device;
+						   which allows you to track it down under the help of encrypted page on our website.
+						   You are therefore able to take control of your device even if it is not under the control of any lock.
+						   You can also report to the police with map and location data displayed on web page.</p>
+					</header>
+
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+
+				<!-- Icons -->
+					<ul class="actions">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					</ul>
+
+				<!-- Menu -->
+					<ul class="menu">
+						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</footer>
+
+		<!-- Scripts -->
+			<script src="{{ asset('welcomeasset/assets/js/jquery.min.js') }}"></script>
+			<script src="{{ asset('welcomeasset/assets/js/jquery.poptrox.min.js') }}"></script>
+			<script src="{{ asset('welcomeasset/assets/js/jquery.scrolly.min.js') }}"></script>
+			<script src="{{ asset('welcomeasset/assets/js/jquery.scrollex.min.js') }}"></script>
+			<script src="{{ asset('welcomeasset/assets/js/skel.min.js') }}"></script>
+			<script src="{{ asset('welcomeasset/assets/js/util.js') }}"></script>
+
+			<!--[if lte IE 8]><script src="{{ asset('welcomeasset/assets/js/ie/respond.min.js') }}"></script><![endif]-->
+			<script src="{{ asset('welcomeasset/assets/js/main.js') }}"></script>
+
+	</body>
+</html>

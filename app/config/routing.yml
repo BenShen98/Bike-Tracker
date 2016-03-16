@@ -1,0 +1,71 @@
+# app:
+#    resource: "@AppBundle/Controller/"
+#s    type:     annotation
+test:
+    path: /test/{API}
+    defaults: {_controller: AppBundle:Main:addVerify}
+
+default:
+    path: /
+    defaults: {_controller: AppBundle:Main:welcome}
+
+welcome:
+    path: /welcome
+    defaults: {_controller: AppBundle:Main:welcome}
+
+login:
+    path: /login
+    defaults: {_controller: AppBundle:Security:login}
+
+active:
+    path: /user/active
+    defaults: {_controller: AppBundle:Main:active}
+
+
+homepage:
+    path: /user
+    defaults: {_controller: AppBundle:Main:home}
+
+#mail:
+    #path: /mail
+    #defaults: { _controller: AppBundle:Main:mail}
+
+logout:
+    path: /logout
+
+add:
+    path: /add
+    methods:  [POST]
+    defaults: {_controller: AppBundle:Main:add}
+
+find:
+    path: /user/find{id}
+    defaults: {_controller: AppBundle:Main:find}
+
+
+map:
+    path: /user/map
+    defaults: {_controller: AppBundle:Main:map}
+
+table:
+    path: /user/table
+    defaults: {_controller: AppBundle:Main:table}
+
+update:
+    path: /user/update
+    defaults: {_controller: AppBundle:Main:updateGeo}
+
+lostBike:
+    path: /user/whereismybike
+    defaults: {_controller: AppBundle:Main:lostBike}
+setting:
+    path: /user/setting
+    defaults: {_controller: AppBundle:Main:setting}
+
+testing:
+    path: /user/admin
+    defaults: {_controller: AppBundle:Main:admin}
+
+user_registration:
+    path: /register
+    defaults: {_controller: AppBundle:Registration:register}

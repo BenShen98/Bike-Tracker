@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <title>{% block title %}Login{% endblock %}</title>
+
+    {% block style %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- <style>
+         #main {
+             height: 100%;
+         }
+         #menubar {
+             height: 20%;
+         }
+     </style>
+     -->
+</head>
+<body>
+{% block body %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path('login') }}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+
+        {#
+            If you want to control the URL the user
+            is redirected to on success (more details below)
+            <input type="hidden" name="_target_path" value="/account" />
+        #}
+
+        <button type="submit">login</button>
+    </form>
+{% endblock %}
+</body>
+</html>

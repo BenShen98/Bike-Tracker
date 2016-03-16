@@ -1,0 +1,28 @@
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    {{ include(':ees/div:div.table.html.twig') }}
+{% endblock %}
+
+{% block style %}
+{{  parent()  }}
+    <style>
+        html
+
+        #thead
+        { width:100% }
+        #table{
+            height:90%;
+            width:100%;
+            margin: 0 0 0 0;
+            overflow:scroll;
+            font-size:1.8em}
+        </style>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
