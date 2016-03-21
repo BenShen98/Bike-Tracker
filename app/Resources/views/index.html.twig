@@ -25,14 +25,14 @@
 
 				<!-- Nav -->
 					<nav id="nav">
-						<form action="{{ path('login') }}" method="post">
+						<form action="{{ path('homepage') }}" method="post">
 							<ul>
 								<li><a href="#intro">Intro</a></li>
 								<li><a href="#one">What I Do</a></li>
 								<li><a href="#two">Further Extention</a></li>
 								<li><a href="#work">My Work</a></li>
-								<li><input onClick="this.setSelectionRange(0, this.value.length)" type="text" id="username" name="_username" value="username" /></li>
-								<li><input onClick="this.setSelectionRange(0, this.value.length)" type="password" id="password" name="_password" value="password"/><li>
+								<!--<li><input onClick="this.setSelectionRange(0, this.value.length)" type="text" id="username" name="_username" value="username" /></li>
+								<li><input onClick="this.setSelectionRange(0, this.value.length)" type="password" id="password" name="_password" value="password"/><li> !-->
 								<li><button type="submit">login</button><li>
 								<li><a href="{{path('user_registration') }}">Register</a></li>
 
