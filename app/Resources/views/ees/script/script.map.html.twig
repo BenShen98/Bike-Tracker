@@ -7,7 +7,11 @@
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
-            center: {lat: {{ products[0].lat }}, lng: {{ products[0].lng }}},
+            {% if products[0] is defined %}
+                center: {lat: {{ products[0].lat }}, lng: {{ products[0].lng }}},
+            {% else %}
+                center: {lat: 52.205303, lng: 0.121988},
+            {% endif %}
             mapTypeId: google.maps.MapTypeId.TERRAIN
         });
         {% block  Coordinates%}
