@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Find My Bike{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="{{ asset('user/basestyle.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('user/style/userbasestyle.css') }}">
         {% endblock %}
 
         {% block style %}
@@ -27,7 +27,7 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li class="selected"><a href="/">Home</a></li>
+                <li class="selected"><a href="/user">Home</a></li>
                 <li><a href="{{ path('lostBike') }}">Lost Bike?</a></li>
                 <li><a href="{{ path('table') }}">detailed log</a></li>
                 <li><a href="{{ path('map') }}">Map</a></li>
