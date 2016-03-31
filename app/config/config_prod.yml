@@ -29,7 +29,7 @@ monolog:
 doctrine:
     dbal:
         #driver:   pdo_mysql
-        #url: "%DATABASE_URL%"
+        url: "%DATABASE_URL%"
         driver:   pdo_pgsql
         host:     "%database_host%"
         port:     "%database_port%"
