@@ -13,3 +13,4 @@ parameters:
     mailer_password: ~
     secret: ThisTokenIsNotSoSecretChangeIt
     google_api_key: your_google_api_key
+    database_url: ~
