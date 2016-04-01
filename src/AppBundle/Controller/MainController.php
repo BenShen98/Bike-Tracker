@@ -22,6 +22,16 @@ class MainController extends Controller
 {
     public function activeAction()
     {
+    ///code from homeAction
+        //Get Location Data form Database
+        $products=$this->getLocation(20);
+
+        //Calculate distance between two point
+        $GeoCalculate = $this->get('geo.calculation');
+        $diff=$GeoCalculate->calculation($products);
+
+    ////end code from homeAction
+
         $em=$this->getDoctrine()->getManager();
         $user=$this->getUser();
 
@@ -29,21 +39,39 @@ class MainController extends Controller
         {
             $user->setArmed(true);
             $lastShow=$this->getLocation(1,'DESC');
-            $lastShow=$lastShow[0];
-            $user->setLat($lastShow->getLat());
-            $user->setLng($lastShow->getLng());
+            if(isset($lastShow[0])){
+                $lastShow=$lastShow[0];
+                $user->setLat($lastShow->getLat());
+                $user->setLng($lastShow->getLng());
+                $message=array("Bike Locker Successfully Achieved");
+                $level="success";
+            }else{
+                $message=array('Bike Locker Achieved Failed','Please install the Bike Tracker and wait for GPS signal first');
+                $user->setArmed(false);
+                $user->setLat(null);
+                $user->setLng(null);
+                $level="danger";
+            }
+
         }else{
             $user->setArmed(false);
             $user->setLat(null);
             $user->setLng(null);
+            $message=array("Bike Locker Successfully UnAchieved");
+            $level="warning";
         }
         $em->flush();
 
 
-        return $this->render('::debug.html.twig',
-        array('user'=>$user));
 
-
+        return $this->render(':ees:active.html.twig',
+            array('messages'=>$message,
+                'level'=>$level,
+                'tableHeadings'=>array("ID","Address","timestamp","Ddistance","Dtime","Dspeed"),
+                'products' => $products,
+                'diff'=>$diff,
+            )
+        );
     }
 
 
