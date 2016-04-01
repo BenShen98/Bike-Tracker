@@ -30,13 +30,19 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li class="selected"><a href="/user">Home</a></li>
+                <li><a href="/user">Home</a></li>
                 <!-- <li><a href="{{ path('lostBike') }}">Lost Bike?</a></li> -->
                 <li><a href="{{ path('table') }}">detailed log</a></li>
                 <li><a href="{{ path('map') }}">Map</a></li>
-                <li><a href="{{ path('active') }}">active</a></li>
+                {% if userState==1 %}
+                <li style="background-color:green; color: white;"><a href="{{ path('active') }}">
+                        <font color="white">active</font></a>
+                </li>
+                {% else %}
+                    <li ><a href="{{ path('active') }}">active</a></li>
+                {% endif %}
                 <li><a href="{{ path('setting') }}">Setting</a></li>
-                <li><a href="{{ path('logout') }}">logout</a></li>
+                <!--<li><a href="{{ path('logout') }}">logout</a></li>-->
             </ul>
         </div>
     {% endblock %}

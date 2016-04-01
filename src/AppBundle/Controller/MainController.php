@@ -62,10 +62,11 @@ class MainController extends Controller
         }
         $em->flush();
 
-
+        $state=$this->isuseractive();
 
         return $this->render(':ees:active.html.twig',
             array('messages'=>$message,
+                'userState'=>$state,
                 'level'=>$level,
                 'tableHeadings'=>array("ID","Address","timestamp","Ddistance","Dtime","Dspeed"),
                 'products' => $products,
@@ -83,10 +84,6 @@ class MainController extends Controller
         );
     }
 
-    public function adminAction()
-    {
-        return new Response('<html><body>Admin page!</body></html>');
-    }
 
     public function settingAction(Request $request)
     {
@@ -138,9 +135,10 @@ class MainController extends Controller
         }
 
         //.....
-
+        $state=$this->isuseractive();
         return $this->render(':ees:setting.html.twig', array(
             'form' => $form->createView(),
+            'userState'=>$state
         ));
     }
 
@@ -173,10 +171,12 @@ class MainController extends Controller
         $GeoCalculate = $this->get('geo.calculation');
         $diff=$GeoCalculate->calculation($products);
 
+        $state=$this->isuseractive();
         return $this->render('ees/home.html.twig',[
             'tableHeadings'=>array("ID","Address","timestamp","Ddistance","Dtime","Dspeed"),
             'products' => $products,
             'diff'=>$diff,
+            'userState'=>$state
         ]);
     }
 
@@ -187,7 +187,7 @@ class MainController extends Controller
         //(1)check user
         if (1==1)//isset($_POST['userapikey'])
         {
-            $user=$this->addVerify('aaaaaaaaaaaaaaaa');//$_POST['key']
+            $user=$this->addVerify($_POST['key']);//$_POST['key']
             if($user==null){
                 throw $this->createNotFoundException("user not found");
             }
@@ -210,7 +210,7 @@ class MainController extends Controller
             }
 
 
-        return new Response('Created product id '.$location->getId());
+        return new Response('success' );
         /*return $this->render('debug.html.twig',
             array('user' => $user->getLatlng(),
                 'location'=>$location->getLatlng(),)
@@ -229,10 +229,13 @@ class MainController extends Controller
         $GeoCalculate = $this->get('geo.calculation');
         $diff=$GeoCalculate->calculation($products);
 
+    $state=$this->isuseractive();
+
         return $this->render('ees/table.html.twig',[
             'tableHeadings'=>array("ID","Address","timestamp","Ddistance","Dtime","Dspeed"),
             'products' => $products,
             'diff'=>$diff,
+            'userState'=>$state
         ]);
     }
 
@@ -284,9 +287,10 @@ class MainController extends Controller
     Public function mapAction()
     {
         $products=$this->getLocation();
-
+        $state=$this->isuseractive();
         return $this->render('ees/map.html.twig',[
-            'products' => $products
+            'products' => $products,
+            'userState'=>$state
         ]);
     }
 
@@ -408,6 +412,11 @@ class MainController extends Controller
         } else {
             return "NA";
         }
+    }
+
+    private function isuseractive(){
+        $user=$this->getUser();
+        return $user->getArmed();
     }
 
     public function sendmail($user,$lastshow,$distanceMoved)
