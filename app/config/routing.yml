@@ -23,7 +23,7 @@ active:
 
 
 homepage:
-    path: /user
+    path: /user/
     defaults: {_controller: AppBundle:Main:home}
 
 #mail:
