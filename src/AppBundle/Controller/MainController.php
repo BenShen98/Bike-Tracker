@@ -17,7 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
-
 class MainController extends Controller
 {
     public function activeAction()
@@ -31,36 +30,7 @@ class MainController extends Controller
         $diff=$GeoCalculate->calculation($products);
 
     ////end code from homeAction
-
-        $em=$this->getDoctrine()->getManager();
-        $user=$this->getUser();
-
-        if($user->getArmed()==false)
-        {
-            $user->setArmed(true);
-            $lastShow=$this->getLocation(1,'DESC');
-            if(isset($lastShow[0])){
-                $lastShow=$lastShow[0];
-                $user->setLat($lastShow->getLat());
-                $user->setLng($lastShow->getLng());
-                $message=array("Bike Locker Successfully Achieved");
-                $level="success";
-            }else{
-                $message=array('Bike Locker Achieved Failed','Please install the Bike Tracker and wait for GPS signal first');
-                $user->setArmed(false);
-                $user->setLat(null);
-                $user->setLng(null);
-                $level="danger";
-            }
-
-        }else{
-            $user->setArmed(false);
-            $user->setLat(null);
-            $user->setLng(null);
-            $message=array("Bike Locker Successfully UnAchieved");
-            $level="warning";
-        }
-        $em->flush();
+        $this->processCommand($message,$level);
 
         $state=$this->isuseractive();
 
@@ -454,4 +424,40 @@ class MainController extends Controller
         $this->get('mailer')->send($message);
     }
 
+    public function processCommand(&$message,&$level)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        if (isset($_GET['command'])) {
+            $command = $_GET['command'];
+
+            switch ($command) {
+                case "activate":
+                    $user->setArmed(true);
+                    $lastShow = $this->getLocation(1, 'DESC');
+                    if (isset($lastShow[0])) {
+                        $lastShow = $lastShow[0];
+                        $user->setLat($lastShow->getLat());
+                        $user->setLng($lastShow->getLng());
+                        $message = array("Bike Locker Successfully Achieved");
+                        $level = "success";
+                    } else {
+                        $message = array('Bike Locker Achieved Failed', 'Please install the Bike Tracker and wait for GPS signal first');
+                        $user->setArmed(false);
+                        $user->setLat(null);
+                        $user->setLng(null);
+                        $level = "danger";
+                    }
+                    break;
+                case "deactivate":
+                    $user->setArmed(false);
+                    $user->setLat(null);
+                    $user->setLng(null);
+                    $message = array("Bike Locker Successfully UnAchieved");
+                    $level = "warning";
+                    break;
+            }
+            $em->flush();
+        }
+    }
 }

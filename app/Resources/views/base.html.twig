@@ -35,11 +35,11 @@
                 <li><a href="{{ path('table') }}">detailed log</a></li>
                 <li><a href="{{ path('map') }}">Map</a></li>
                 {% if userState==1 %}
-                <li style="background-color:green; color: white;"><a href="{{ path('active') }}">
+                <li style="background-color:green; color: white;"><a href="{{ path('active') }}?command=deactivate">
                         <font color="white">active</font></a>
                 </li>
                 {% else %}
-                    <li ><a href="{{ path('active') }}">active</a></li>
+                    <li ><a href="{{ path('active') }}?command=activate">active</a></li>
                 {% endif %}
                 <li><a href="{{ path('setting') }}">Setting</a></li>
                 <!--<li><a href="{{ path('logout') }}">logout</a></li>-->

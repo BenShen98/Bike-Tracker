@@ -32,16 +32,18 @@
 {% endblock %}
 
 {% block message %}
-    <div class="alert {{ level }}">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        {% for key,message in messages %}
-            {% if key==0 %}
-                <center><font size="5">{{ message }}</font></center>
-                {% else %}
-                    <br>{{ message }}
-                {% endif %}
-        {% endfor %}
-    </div>
+    {% if messages is not null  %}
+        <div class="alert {{ level }}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {% for key,message in messages %}
+                {% if key==0 %}
+                    <center><font size="5">{{ message }}</font></center>
+                    {% else %}
+                        <br>{{ message }}
+                    {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {{ parent() }}
 {% endblock %}
