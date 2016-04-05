@@ -62,10 +62,13 @@ setting:
     path: /user/setting
     defaults: {_controller: AppBundle:Main:setting}
 
-testing:
-    path: /user/admin
-    defaults: {_controller: AppBundle:Main:admin}
+#testing:
+#    path: /user/admin
+#    defaults: {_controller: AppBundle:Main:admin}
 
 user_registration:
     path: /register
     defaults: {_controller: AppBundle:Registration:register}
+Ajax_active:
+    path: /user/ajax/active
+    defaults: {_controller: AppBundle:Main:activationSwitch}

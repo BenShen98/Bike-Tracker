@@ -20,6 +20,7 @@
             }
         </style>
         -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     </head>
     <body>
     {% block message %}
@@ -39,8 +40,10 @@
                         <font color="white">active</font></a>
                 </li>
                 {% else %}
-                    <li ><a href="{{ path('active') }}?command=activate">active</a></li>
+                    <li><a href="{{ path('active') }}?command=activate">active</a></li>
                 {% endif %}
+                <button id="activation">wait</button>
+
                 <li><a href="{{ path('setting') }}">Setting</a></li>
                 <!--<li><a href="{{ path('logout') }}">logout</a></li>-->
             </ul>
@@ -53,7 +56,9 @@
 
     {% endblock %}
 
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+    {% endblock %}
+    {{ include(":ees/script:ajax.active.html.twig") }}
 
     </body>
 </html>

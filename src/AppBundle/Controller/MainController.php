@@ -12,6 +12,7 @@ use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Forms;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +20,57 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 class MainController extends Controller
 {
+    public function activationSwitchAction()
+    {
+        $user=$this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        //if get post info
+        if (isset($_POST['activation'])) {
+            if($_POST['activation']=='deactivate'){
+                $user->setArmed(false);
+                $user->setLat(null);
+                $user->setLng(null);
+                $message = array("Bike Locker Successfully UnAchieved");
+                $level = "warning";
+            }else{
+                $user->setArmed(true);
+                $lastShow = $this->getLocation(1, 'DESC');
+                if (isset($lastShow[0])) {
+                    $lastShow = $lastShow[0];
+                    $user->setLat($lastShow->getLat());
+                    $user->setLng($lastShow->getLng());
+                    $message = array("Bike Locker Successfully Achieved");
+                    $level = "success";
+                } else {
+                    $message = array('Bike Locker Achieved Failed', 'Please install the Bike Tracker and wait for GPS signal first');
+                    $user->setArmed(false);
+                    $user->setLat(null);
+                    $user->setLng(null);
+                    $level = "danger";
+                }
+            }
+            $em->flush();
+        }
+
+    //return info
+        if($user->getArmed()){
+            $activation='activated';
+        }else{
+            $activation='deactivated';
+
+        }
+
+        $response=new JsonResponse();
+        $response->setData(
+          array(
+              'response'=>'OK',
+              'message'=>'',
+              'activation'=>$activation
+          )
+        );
+        return $response;
+    }
+
     public function activeAction()
     {
     ///code from homeAction
@@ -460,4 +512,5 @@ class MainController extends Controller
             $em->flush();
         }
     }
+
 }

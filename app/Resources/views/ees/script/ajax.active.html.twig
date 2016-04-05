@@ -1,0 +1,49 @@
+<script>
+$(function(){
+    var currentActivation='';
+    $.ajax({
+        type:'GET',
+        url:'{{path('Ajax_active')}}',
+        success: function(data){
+            if(data.response=='OK'){
+                currentActivation=data.activation;
+                $("#activation").text(data.activation);
+            }else{
+                alert("unable to get current Bike's activation state");
+            }
+        },
+        error:function(){
+            alert("unable to get current Bike's activation state");
+        }
+
+    })
+
+    $('#activation').on('click',function(){
+        console.log('Hi',currentActivation);
+        if (currentActivation=='deactivated'){
+            var postData = {
+                activation:'activate',
+            };
+        }else if(currentActivation=='activated'){
+            var postData = {
+                activation: 'deactivate',
+            };
+        }
+
+        $.ajax({
+            type: 'POST',
+            url:'{{path('Ajax_active')}}',
+            data:postData,
+            success: function(data){
+                if(data.response=='OK'){
+                    $("#activation").text(data.activation);
+                    currentActivation=data.activation;
+                }else{
+                    alert("unable to get current Bike's activation state");
+                }
+            },
+        })
+    })
+
+});
+</script>
