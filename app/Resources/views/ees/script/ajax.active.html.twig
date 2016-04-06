@@ -15,6 +15,7 @@ $(function(){
             case "error":
                 $("#activation").removeClass().addClass('error');
                 $("#activation").text('error');
+                alert(data.message);
                 break;
         }
     }

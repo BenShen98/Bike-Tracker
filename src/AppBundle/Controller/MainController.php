@@ -25,6 +25,7 @@ class MainController extends Controller
         $user=$this->getUser();
         $em = $this->getDoctrine()->getManager();
         $level = "";
+        $message='';
         //if get post info
         if (isset($_POST['activation'])) {
             if($_POST['activation']=='deactivate'){
@@ -41,7 +42,7 @@ class MainController extends Controller
                     $user->setLng($lastShow->getLng());
                     $message = array("Bike Locker Successfully Achieved");
                 } else {
-                    $message = array('Bike Locker Achieved Failed', 'Please install the Bike Tracker and wait for GPS signal first');
+                    $message = array("Bike Locker Achieved Failed\n\nPlease install the Bike Tracker and wait for GPS signal first");
                     $user->setArmed(false);
                     $user->setLat(null);
                     $user->setLng(null);
@@ -64,7 +65,7 @@ class MainController extends Controller
         $response->setData(
           array(
               'response'=>'OK',
-              'message'=>'',
+              'message'=>$message,
               'activation'=>$activation,
               'level'=>$level
           )
