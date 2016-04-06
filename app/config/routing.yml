@@ -23,7 +23,7 @@ homepage:
     defaults: {_controller: AppBundle:Main:home}
 
 logout:
-    path: /logout
+    path: /user/logout
 
 add:
     path: /add
