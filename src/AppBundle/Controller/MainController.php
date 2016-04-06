@@ -73,33 +73,6 @@ class MainController extends Controller
         return $response;
     }
 
-    public function activeAction()
-    {
-    ///code from homeAction
-        //Get Location Data form Database
-        $products=$this->getLocation(20);
-
-        //Calculate distance between two point
-        $GeoCalculate = $this->get('geo.calculation');
-        $diff=$GeoCalculate->calculation($products);
-
-    ////end code from homeAction
-        $this->processCommand($message,$level);
-
-        $state=$this->isuseractive();
-
-        return $this->render(':ees:active.html.twig',
-            array('messages'=>$message,
-                'userState'=>$state,
-                'level'=>$level,
-                'tableHeadings'=>array("ID","Address","timestamp","Ddistance","Dtime","Dspeed"),
-                'products' => $products,
-                'diff'=>$diff,
-            )
-        );
-    }
-
-
     public function welcomeAction()
     {
         return $this->render(
@@ -166,26 +139,6 @@ class MainController extends Controller
         ));
     }
 
-    public function lostBikeAction()
-    {
-
-    }
-/*
-    public function mailAction()
-    {
-        $lastshow=$this->getLocation(1,'DESC');
-        $lastshow=$lastshow[0];
-
-        $user= $this->user(1);
-        $this->sendmail($user,$lastshow);
-
-
-        return $this->render('debug.html.twig',
-            array('current' => $lastshow,
-                'user'=>$user,)
-        );
-    }
-*/
 
     public function homeAction(){
         //Get Location Data form Database
@@ -262,51 +215,6 @@ class MainController extends Controller
             'userState'=>$state
         ]);
     }
-
-
-
-
-    public function findAction($id)
-    {
-        /*$product = $this->getDoctrine()
-            ->getRepository('AppBundle:Location')
-            ->findBy(
-                array('timestamp'),
-                array('timestamp'=>'DESC')
-                );
-        */
-        $em = $this->getDoctrine()->getManager();
-        $qb=$em->createQueryBuilder();
-        $qb->select('l')
-            ->from('Location','l')
-            ->where ('l.id BETWEEN 5 AND 10')
-            ->orderBy('l.id','ASC');
-        $q=$qb->getQuery();
-        $product=$q->getResult();
-
-        /*
-        if ($product) {
-            $address=$product[0]->getAddress();
-            //$address=$this->reverseGeocoding($product[0]->getLatlng());
-        }else{
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
-        }
-
-        return $this->render('debug.html.twig',[
-            //'body'=>''
-            'body' =>'The address is '.$address,
-            //'body' =>var_dump($data->status)
-        ]);
-        */
-        return $this->render('::debug.html.twig',[
-            'product'=>$product
-        ]);
-    }
-
-
-
 
     Public function mapAction()
     {

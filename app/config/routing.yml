@@ -1,10 +1,6 @@
 # app:
 #    resource: "@AppBundle/Controller/"
 #s    type:     annotation
-test:
-    path: /test/{API}
-    defaults: {_controller: AppBundle:Main:addVerify}
-
 default:
     path: /
     defaults: {_controller: AppBundle:Main:welcome}
@@ -26,10 +22,6 @@ homepage:
     path: /user/
     defaults: {_controller: AppBundle:Main:home}
 
-#mail:
-    #path: /mail
-    #defaults: { _controller: AppBundle:Main:mail}
-
 logout:
     path: /logout
 
@@ -37,11 +29,6 @@ add:
     path: /add
     methods:  [POST]
     defaults: {_controller: AppBundle:Main:add}
-
-find:
-    path: /user/find{id}
-    defaults: {_controller: AppBundle:Main:find}
-
 
 map:
     path: /user/map
@@ -55,16 +42,9 @@ update:
     path: /user/update
     defaults: {_controller: AppBundle:Main:updateGeo}
 
-lostBike:
-    path: /user/whereismybike
-    defaults: {_controller: AppBundle:Main:lostBike}
 setting:
     path: /user/setting
     defaults: {_controller: AppBundle:Main:setting}
-
-#testing:
-#    path: /user/admin
-#    defaults: {_controller: AppBundle:Main:admin}
 
 user_registration:
     path: /register
