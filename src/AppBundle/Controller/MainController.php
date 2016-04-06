@@ -24,6 +24,7 @@ class MainController extends Controller
     {
         $user=$this->getUser();
         $em = $this->getDoctrine()->getManager();
+        $level = "";
         //if get post info
         if (isset($_POST['activation'])) {
             if($_POST['activation']=='deactivate'){
@@ -31,7 +32,6 @@ class MainController extends Controller
                 $user->setLat(null);
                 $user->setLng(null);
                 $message = array("Bike Locker Successfully UnAchieved");
-                $level = "warning";
             }else{
                 $user->setArmed(true);
                 $lastShow = $this->getLocation(1, 'DESC');
@@ -40,13 +40,12 @@ class MainController extends Controller
                     $user->setLat($lastShow->getLat());
                     $user->setLng($lastShow->getLng());
                     $message = array("Bike Locker Successfully Achieved");
-                    $level = "success";
                 } else {
                     $message = array('Bike Locker Achieved Failed', 'Please install the Bike Tracker and wait for GPS signal first');
                     $user->setArmed(false);
                     $user->setLat(null);
                     $user->setLng(null);
-                    $level = "danger";
+                    $level = "error";
                 }
             }
             $em->flush();
@@ -55,9 +54,10 @@ class MainController extends Controller
     //return info
         if($user->getArmed()){
             $activation='activated';
+            if(empty($level)){$level = "on";}
         }else{
             $activation='deactivated';
-
+            if(empty($level)){$level = "off";}
         }
 
         $response=new JsonResponse();
@@ -65,7 +65,8 @@ class MainController extends Controller
           array(
               'response'=>'OK',
               'message'=>'',
-              'activation'=>$activation
+              'activation'=>$activation,
+              'level'=>$level
           )
         );
         return $response;

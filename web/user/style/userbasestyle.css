@@ -153,7 +153,7 @@ ul#menu li a
 { letter-spacing: 0.3em;
   background-colour:black;
   color:white;
-  border-radius:4px 2px 0 0
+  border-radius:4px 2px 0 0;
   font: normal 200% , sans-serif;
   display: block; 
   float: left; 
@@ -164,6 +164,41 @@ ul#menu li a
   text-transform: uppercase;
   text-decoration: none;
   background: transparent;}
+
+ul#menu li button
+{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  height: 3.5em;
+  line-height: 3.5em;
+  outline: 0;
+  padding: 0 2em 0 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+
+ul#menu li button.on
+{
+  background-color: #98c593 ;
+}
+
+ul#menu li button.off
+{
+  background-color: dimgray ;
+}
+
+ul#menu li button.error
+{
+  background-color: orange ;
+}
 
 ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 { color: #FFF;

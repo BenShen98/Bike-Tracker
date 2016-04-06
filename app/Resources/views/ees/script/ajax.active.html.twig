@@ -1,13 +1,30 @@
 <script>
 $(function(){
     var currentActivation='';
+
+    function updateStatus(data){
+        currentActivation=data.activation;
+        $("#activation").text(data.activation);
+        switch (data.level) {
+            case "on":
+                $("#activation").removeClass().addClass('on');
+                break;
+            case "off":
+                $("#activation").removeClass().addClass('off');
+                break;
+            case "error":
+                $("#activation").removeClass().addClass('error');
+                $("#activation").text('error');
+                break;
+        }
+    }
+
     $.ajax({
         type:'GET',
         url:'{{path('Ajax_active')}}',
         success: function(data){
             if(data.response=='OK'){
-                currentActivation=data.activation;
-                $("#activation").text(data.activation);
+                updateStatus(data);
             }else{
                 alert("unable to get current Bike's activation state");
             }
@@ -19,7 +36,6 @@ $(function(){
     })
 
     $('#activation').on('click',function(){
-        console.log('Hi',currentActivation);
         if (currentActivation=='deactivated'){
             var postData = {
                 activation:'activate',
@@ -36,8 +52,7 @@ $(function(){
             data:postData,
             success: function(data){
                 if(data.response=='OK'){
-                    $("#activation").text(data.activation);
-                    currentActivation=data.activation;
+                    updateStatus(data);
                 }else{
                     alert("unable to get current Bike's activation state");
                 }
