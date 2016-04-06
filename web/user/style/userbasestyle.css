@@ -183,6 +183,7 @@ ul#menu li button
   position: relative;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 ul#menu li button.on
