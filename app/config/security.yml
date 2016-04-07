@@ -40,8 +40,9 @@ security:
                 logout:
                     path:   logout
                     target: welcome
-    access_control:
-            - {path: ^/user/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+
+#    access_control:
+#            - {path: ^/user/, roles: ROLE_USER , requires_channel: https }
 
 
             # activate different ways to authenticate

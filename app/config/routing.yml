@@ -21,6 +21,7 @@ active:
 homepage:
     path: /user/
     defaults: {_controller: AppBundle:Main:home}
+    schemes:  [https]
 
 logout:
     path: /user/logout
