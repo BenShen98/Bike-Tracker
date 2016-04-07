@@ -41,8 +41,8 @@ security:
                     path:   logout
                     target: welcome
 
-#    access_control:
-#            - {path: ^/user/, roles: ROLE_USER , requires_channel: https }
+    access_control:
+            - {path: ^/user/, roles: ROLE_USER , requires_channel: https }
 
 
             # activate different ways to authenticate
