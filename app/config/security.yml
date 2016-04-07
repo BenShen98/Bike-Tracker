@@ -40,14 +40,8 @@ security:
                 logout:
                     path:   logout
                     target: welcome
-
-
-            api:
-                pattern: ^/api
-                stateless: true
-                simple_preauth:
-                    authenticator: apikey_authenticator
-                provider: api_key_user_provider
+    access_control:
+            - {path: ^/user/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
 
 
             # activate different ways to authenticate
