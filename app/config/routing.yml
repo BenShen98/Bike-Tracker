@@ -4,17 +4,14 @@
 default:
     path: /
     defaults: {_controller: AppBundle:Main:welcome}
-    schemes:  [https]
 
 welcome:
     path: /welcome
     defaults: {_controller: AppBundle:Main:welcome}
-    schemes:  [https]
 
 login:
     path: /login
     defaults: {_controller: AppBundle:Security:login}
-    schemes:  [https]
 
 active:
     path: /user/active

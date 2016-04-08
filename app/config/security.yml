@@ -22,10 +22,11 @@ security:
                 pattern: ^/(_(profiler|wdt)|css|images|js)/
                 security: false
 
+            unlogin_firewall:
 
 
 
-            main:
+            login_firewall:
                 pattern:    ^/user
                 http_basic:
                     provider: our_db_provider
