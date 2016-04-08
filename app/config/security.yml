@@ -34,11 +34,11 @@ security:
                     provider: our_db_provider
                     login_path: login
                     check_path: login
-                    # login success redirecting options (read further below)
-                    always_use_default_target_path: false
-                    default_target_path: homepage
-                    target_path_parameter: _target_path
-                    use_referer: false
+#                    # login success redirecting options (read further below)
+#                    always_use_default_target_path: false
+#                    default_target_path: homepage
+#                    target_path_parameter: _target_path
+#                    use_referer: false
                 logout:
                     path:   logout
                     target: welcome
