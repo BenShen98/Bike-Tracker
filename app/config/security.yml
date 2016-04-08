@@ -22,18 +22,18 @@ security:
                 pattern: ^/(_(profiler|wdt)|css|images|js)/
                 security: false
 
-            #anonymous: ~
+
 
 
             main:
                 pattern:    ^/user
-#                http_basic:
-#                    provider: our_db_provider
-
-                form_login:
+                http_basic:
                     provider: our_db_provider
-                    login_path: login
-                    check_path: login
+                #anonymous: ~
+
+#                form_login:
+#                    login_path: login
+#                    check_path: login
 #                    # login success redirecting options (read further below)
 #                    always_use_default_target_path: false
 #                    default_target_path: homepage
