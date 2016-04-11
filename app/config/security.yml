@@ -22,10 +22,6 @@ security:
                 pattern: ^/(_(profiler|wdt)|css|images|js)/
                 security: false
 
-            unlogin_firewall:
-
-
-
             login_firewall:
                 pattern:    ^/user
                 http_basic:
