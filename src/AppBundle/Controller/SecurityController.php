@@ -11,25 +11,30 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 
 class SecurityController extends Controller
 {
     public function loginAction(Request $request)
     {
-        $authenticationUtils = $this->get('security.authentication_utils');
+        $session = $request->getSession();
 
         // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+        if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(
+                SecurityContextInterface::AUTHENTICATION_ERROR
+            );
+        } else {
+            $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
+        }
 
         return $this->render(
-            'security/login.html.twig',
+            ':security:login.html.twig',
             array(
                 // last username entered by the user
-                'last_username' => $lastUsername,
+                'last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),
                 'error'         => $error,
             )
         );
