@@ -33,10 +33,10 @@ security:
                     provider: our_db_provider
 
 
-                form_login:
-                    login_path: login
-                    check_path: login
-                    default_target_path: homepage
+#                form_login:
+#                    login_path: login
+#                    check_path: login
+#                    default_target_path: homepage
 #                    # login success redirecting options (read further below)
 #                    always_use_default_target_path: false
 #                    default_target_path: homepage
