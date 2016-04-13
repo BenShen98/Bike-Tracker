@@ -6,8 +6,8 @@
 #    path: /
 #    defaults: {_controller: AppBundle:Main:welcome}
 
-welcome:
-    path: /welcome
+about:
+    path: /about
     defaults: {_controller: AppBundle:Main:welcome}
 
 login:

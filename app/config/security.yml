@@ -41,11 +41,12 @@ security:
 #                    use_referer: false
                 logout:
                     path:   logout
-                    target: welcome
+                    target: login
 
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        - { path: ^/, roles: ROLE_USER, requires_channel: https }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/about, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/, roles: ROLE_USER, requires_channel: http }
 #        - { path: /user, roles: ROLE_USER, requires_channel: https }
 #        - {path: ^/user, roles: ROLE_ANY , requires_channel: https }
 
