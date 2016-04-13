@@ -1,9 +1,10 @@
 # app:
 #    resource: "@AppBundle/Controller/"
 #s    type:     annotation
-default:
-    path: /
-    defaults: {_controller: AppBundle:Main:welcome}
+
+#default:
+#    path: /
+#    defaults: {_controller: AppBundle:Main:welcome}
 
 welcome:
     path: /welcome
@@ -13,17 +14,12 @@ login:
     path: /login
     defaults: {_controller: AppBundle:Security:login}
 
-active:
-    path: /user/active
-    defaults: {_controller: AppBundle:Main:active}
-
-
 homepage:
-    path: /user/
+    path: /
     defaults: {_controller: AppBundle:Main:home}
 
 logout:
-    path: /user/logout
+    path: /logout
 
 add:
     path: /add
@@ -31,24 +27,24 @@ add:
     defaults: {_controller: AppBundle:Main:add}
 
 map:
-    path: /user/map
+    path: /map
     defaults: {_controller: AppBundle:Main:map}
 
 table:
-    path: /user/table
+    path: /table
     defaults: {_controller: AppBundle:Main:table}
 
 update:
-    path: /user/update
+    path: /update
     defaults: {_controller: AppBundle:Main:updateGeo}
 
 setting:
-    path: /user/setting
+    path: /setting
     defaults: {_controller: AppBundle:Main:setting}
 
 user_registration:
     path: /register
     defaults: {_controller: AppBundle:Registration:register}
 Ajax_active:
-    path: /user/ajax/active
+    path: /ajax/active
     defaults: {_controller: AppBundle:Main:activationSwitch}

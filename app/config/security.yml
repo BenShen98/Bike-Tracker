@@ -23,19 +23,16 @@ security:
                 pattern: ^/(_(profiler|wdt)|css|images|js)/
                 security: false
 
-
-
-
             login_firewall:
-                pattern:    ^/user
+#                pattern:    ^/user #(All pattern)
+                anonymous: ~
 
                 http_basic:
                     provider: our_db_provider
 
-
-#                form_login:
-#                    login_path: login
-#                    check_path: login
+                form_login:
+                    login_path: login
+                    check_path: login
 #                    default_target_path: homepage
 #                    # login success redirecting options (read further below)
 #                    always_use_default_target_path: false
@@ -46,13 +43,9 @@ security:
                     path:   logout
                     target: welcome
 
-
-            anonymous_firewall:
-                pattern:    /
-                anonymous: ~
-
     access_control:
-        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/, roles: ROLE_USER, requires_channel: https }
 #        - { path: /user, roles: ROLE_USER, requires_channel: https }
 #        - {path: ^/user, roles: ROLE_ANY , requires_channel: https }
 
