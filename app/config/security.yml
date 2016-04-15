@@ -47,7 +47,7 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/about, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_USER, requires_channel: https }
+        - { path: ^/, roles: ROLE_USER, requires_channel: http }
 #        - { path: /user, roles: ROLE_USER, requires_channel: https }
 #        - {path: ^/user, roles: ROLE_ANY , requires_channel: https }
 
