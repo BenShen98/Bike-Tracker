@@ -162,7 +162,7 @@ class MainController extends Controller
     public function addAction()
     {
         //(1)check user
-        if (isset($_POST['userapikey']))
+        if (isset($_POST['key']))
         {
             $user=$this->addVerify($_POST['key']);//$_POST['key']
             if($user==null){
@@ -170,7 +170,7 @@ class MainController extends Controller
             }
         }else{
             throw $this->createNotFoundException(
-                "No User Found");
+                "Invalid Key");
         }
         //(2)addLcation
 
