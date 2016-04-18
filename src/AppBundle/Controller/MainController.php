@@ -162,7 +162,7 @@ class MainController extends Controller
     public function addAction()
     {
         //(1)check user
-        if (1==1)//isset($_POST['userapikey'])
+        if (isset($_POST['userapikey']))
         {
             $user=$this->addVerify($_POST['key']);//$_POST['key']
             if($user==null){
@@ -170,7 +170,7 @@ class MainController extends Controller
             }
         }else{
             throw $this->createNotFoundException(
-                "Bad Request");
+                "No User Found");
         }
         //(2)addLcation
 
@@ -354,7 +354,7 @@ class MainController extends Controller
     public function sendmail($user,$lastshow,$distanceMoved)
     {
         $message = \Swift_Message::newInstance();
-        $imageURL=$message->embed(Swift_Image::fromPath('https://maps.googleapis.com/maps/api/staticmap?center='.$user->getLatlng().'&zoom=15&size=1000x1000&maptype=roadmap&markers=color:red%7Clabel:M%7C'.$lastshow->getLatlng().'&markers=color:blue%7Clabel:L%7C'.$user->getLatlng().'&key='.$this->getParameter('google_api_key'), 'image/jpeg')
+        $imageURL=$message->embed(Swift_Image::fromPath('https://maps.googleapis.com/maps/api/staticmap?center='.$user->getLatlng().'&zoom=15&size=11000x1000&maptype=roadmap&markers=color:red%7Clabel:M%7C'.$lastshow->getLatlng().'&markers=color:blue%7Clabel:L%7C'.$user->getLatlng().'&key='.$this->getParameter('google_api_key'), 'image/jpeg')
             ->setFilename(date("D M d, Y G:i").'.jpg')
             ->setDisposition('inline'));
         $message
