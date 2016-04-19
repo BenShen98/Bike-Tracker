@@ -20,6 +20,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 class MainController extends Controller
 {
+    public function postTestAction()
+    {
+        $response=new JsonResponse();
+        $response->setData(
+            $_POST
+        );
+        return $response;
+    }
+
+
+
+
     public function activationSwitchAction()
     {
         $user=$this->getUser();

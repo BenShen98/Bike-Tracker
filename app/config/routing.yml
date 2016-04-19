@@ -48,3 +48,8 @@ user_registration:
 Ajax_active:
     path: /ajax/active
     defaults: {_controller: AppBundle:Main:activationSwitch}
+
+post_test:
+    path: /test
+    defaults: {_controller: AppBundle:Main:postTest}
+
