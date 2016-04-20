@@ -28,9 +28,10 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 {% endblock %}
-    {% block style %}
-	.form {
-  background: #FFFFFF;
+</body>
+ {% block style %}
+	  .form {
+       background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -66,5 +67,4 @@
   background: #43A047;
 }
     {% endblock %}
-</body>
 </html>
