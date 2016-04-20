@@ -316,9 +316,9 @@ class MainController extends Controller
         if (isset($_POST['lat'],$_POST['lng'])){
             if(is_numeric($_POST['lat'])&is_numeric($_POST['lng'])) {
                 $location = new Location();
-                $location->setLat($_POST['lat']);
-                $location->setLng($_POST['lng']);
-                $location->setAlt($_POST['alt']);
+                $location->setLat($this->DMStoDEC($_POST['lat']));
+                $location->setLng($this->DMStoDEC($_POST['lng']));
+                $location->setAlt($this->DMStoDEC($_POST['alt']));
                 $location->setSpeed($_POST['speed']);
                 $location->setBearing($_POST['bearing']);
                 $location->currentTime();
@@ -433,6 +433,13 @@ class MainController extends Controller
             }
             $em->flush();
         }
+    }
+
+    private function DMStoDEC($data)
+    {
+        $deg=(int)($data/100);
+        $min=$data-$deg*100;
+        return $deg+($min/60);
     }
 
 }
