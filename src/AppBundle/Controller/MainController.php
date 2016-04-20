@@ -326,7 +326,7 @@ class MainController extends Controller
                 $location->setSpeed($_POST['speed']);
                 $location->setBearing($_POST['bearing']);
                 $location->currentTime();
-                $location->setAddress($this->reverseGeocoding($_POST['lat'].','.$_POST['lng']));
+                $location->setAddress($this->reverseGeocoding(number_format($lat, 6, '.', '').','.number_format($lng, 6, '.', '')));
                 $location->setUserId($userId);
                 $em = $this->getDoctrine()->getManager();
 
