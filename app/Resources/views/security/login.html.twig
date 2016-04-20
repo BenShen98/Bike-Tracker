@@ -50,7 +50,7 @@
   background: #43A047;
  .error {
  text-align: center;
- font-family: "Roboto",sans-serif;
+ /*font-family: "Roboto",sans-serif;*/
  font color="red";
  }
 }
@@ -73,13 +73,14 @@
         #}
 
         <button type="submit">login</button>
+        {% if error %}
+            <div class="error">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
     </form>
 	</div>
-    {% if error %}
-        <div class="error">
-		{{ error.messageKey|trans(error.messageData, 'security') }}
-		</div>
-    {% endif %}
+
 {% endblock %}
 </body>
 
