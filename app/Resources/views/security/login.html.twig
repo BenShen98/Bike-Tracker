@@ -13,6 +13,7 @@
 	  text-align: center;
 	  }
 	  .form {
+	   font-family: "Roboto", sans-serif;
        background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
@@ -47,6 +48,11 @@
 }
 .form button:hover,.form button:active,.form button:focus {
   background: #43A047;
+ .error {
+ text-align: center;
+ font-family: "Roboto",sans-serif;
+ font color="red";
+ }
 }
 </style>
 <body>
@@ -70,7 +76,9 @@
     </form>
 	</div>
     {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class="error">
+		{{ error.messageKey|trans(error.messageData, 'security') }}
+		</div>
     {% endif %}
 {% endblock %}
 </body>
