@@ -63,10 +63,10 @@
 	<div class="form">
     <form action="{{ path('login') }}" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        <input onClick="this.setSelectionRange(0, this.value.length)" type="text" id="username" name="_username" value="{{ last_username }}" />
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
+        <input onClick="this.setSelectionRange(0, this.value.length)" type="password" id="password" name="_password" />
 
         {#
             If you want to control the URL the user
