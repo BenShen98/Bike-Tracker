@@ -316,9 +316,13 @@ class MainController extends Controller
         if (isset($_POST['lat'],$_POST['lng'])){
             if(is_numeric($_POST['lat'])&is_numeric($_POST['lng'])) {
                 $location = new Location();
-                $location->setLat($this->DMStoDEC($_POST['lat']));
-                $location->setLng($this->DMStoDEC($_POST['lng']));
-                $location->setAlt($this->DMStoDEC($_POST['alt']));
+                $lat=$this->DMStoDEC($_POST['lat']);
+                $lng=$this->DMStoDEC($_POST['lng']);
+                $alt=$this->DMStoDEC($_POST['alt']);
+
+                $location->setLat(number_format($lat, 6, '.', ''));
+                $location->setLng(number_format($lng, 6, '.', ''));
+                $location->setAlt(number_format($alt, 6, '.', ''));
                 $location->setSpeed($_POST['speed']);
                 $location->setBearing($_POST['bearing']);
                 $location->currentTime();
